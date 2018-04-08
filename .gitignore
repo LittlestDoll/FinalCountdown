@@ -1,3 +1,4 @@
 *.sql
 .DS_Store
 *.csv
+beer_query.py
