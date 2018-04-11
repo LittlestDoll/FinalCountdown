@@ -40,6 +40,7 @@ def calculate_similarity(beer1, beer2):
 def recommend_beer(user_beer):
     beers = np.random.choice(data['beer_name'], 60, replace = False)
     max_distance = 100
+    sim_beer = "Sorry, we couldn't find anything similar! Try again?"
     for beer in beers:
         print ("starting", beer)
         for beer in beers:
@@ -47,5 +48,6 @@ def recommend_beer(user_beer):
                 row = [beer, calculate_similarity(user_beer, beer)]
                 if row[1] < max_distance:
                     max_distance = row[1]
-        return(row)
+                    sim_beer = row[0]
+    return(sim_beer)
 
