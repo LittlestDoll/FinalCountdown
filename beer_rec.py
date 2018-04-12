@@ -7,14 +7,20 @@ breweries = pd.read_csv('breweries.csv')
 data = pd.merge(reviews, breweries, how='inner', left_on = 'brewery_name', right_on = 'name')
 data = data.fillna(value = 0)
 
+import pandas as pd
+import numpy as np
+from scipy.spatial import distance
+reviews = pd.read_csv('beer_reviews.csv')
+breweries = pd.read_csv('breweries.csv')
+
+data = pd.merge(reviews, breweries, how='inner', left_on = 'brewery_name', right_on = 'name')
+data = data.fillna(value = 0)
+
 def similar_reviewers(beer_1, beer_2):
     reviews_1 = data.loc[data['beer_name'] == beer_1]
     reviews_2 = data.loc[data['beer_name'] == beer_2]
     same_reviewers = list(set(reviews_1['review_profilename']).intersection(reviews_2['review_profilename']))
-    if len(same_reviewers)==0:
-        return 0
-    else:
-        return same_reviewers
+    return same_reviewers
 
 def get_beer_reviews(beer, reviewers):
     mask = (data.review_profilename.isin(reviewers)) & (data.beer_name==beer)
@@ -27,8 +33,10 @@ def calculate_similarity(beer1, beer2):
     beer_1_reviewers = data[data.beer_name==beer1].review_profilename.unique()
     beer_2_reviewers = data[data.beer_name==beer2].review_profilename.unique()
     common_reviewers = set(beer_1_reviewers).intersection(beer_2_reviewers)
+    
     beer_1_reviews = get_beer_reviews(beer1, common_reviewers)
     beer_2_reviews = get_beer_reviews(beer2, common_reviewers)
+    
     beer_1_vals = []
     beer_2_vals = []
     for f in features:
@@ -43,11 +51,10 @@ def recommend_beer(user_beer):
     sim_beer = "Sorry, we couldn't find anything similar! Try again?"
     for beer in beers:
         print ("starting", beer)
-        for beer in beers:
-            if user_beer != beer:
+        if user_beer != beer:
+            if len(similar_reviewers(user_beer, beer)) != 0:
                 row = [beer, calculate_similarity(user_beer, beer)]
                 if row[1] < max_distance:
                     max_distance = row[1]
                     sim_beer = row[0]
     return(sim_beer)
-
