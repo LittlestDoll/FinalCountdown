@@ -2,3 +2,5 @@
 .DS_Store
 *.csv
 beer_query.py
+__pycache__
+*.ipynb

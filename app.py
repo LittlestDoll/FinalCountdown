@@ -1,39 +1,40 @@
 from flask import Flask, render_template, jsonify
-from model import Model
+#from model import Model
+import beer_rec
+
+#For now, app is loading static csv file. We should move the file to resources or 
+#if performance is an issue connect this app to a db. Model shouldn't be needed unless
+#we have a db connection
 
 app = Flask(__name__)
-model = Model()
+#model = Model()
 
 @app.route('/')
 def home():
-    """Return the dashboard homepage."""
     return render_template('index.html')
 
-@app.route('/app.js')
-def appjs():
-    return app.send_static_file('app.js')
+@app.route('/maps')
+def home():
+    return render_template('map.html')
+
+@app.route('/graphs')
+def home():
+    return render_template('graphs.html')
+
+@app.route('/recs')
+def home():
+    return render_template('recs.html')
 
 @app.route('/names')
+#We would use this API endpoint to populate dropdown
 def names():
-    """List of beer names.
-    Returns a list of beer names
-    """
-    names = model.get_names()
+    names = data['beer_name']
     return jsonify(names)
 
-@app.route('/data')
-def otu():
-    """Table of data
-    """
-    return jsonify(data)
-
-@app.route('/metadata/<beer>')
-def metadata(sample):
-    """MetaData for a given beer - as a dict
-
-    Returns a json dictionary of beer metadata
-    """
-    return jsonify(model.get_beer(beer_name))         
+@app.route('/data/<beer>')
+def data(beer):
+    beer_data_row = data.loc[data['beer_name'] == beer]
+    return jsonify (beer_data_row)
 
 if __name__ == "__main__":
     app.run(debug=True)
