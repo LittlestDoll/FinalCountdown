@@ -14,15 +14,15 @@ def home():
     return render_template('index.html')
 
 @app.route('/maps')
-def home():
+def maps():
     return render_template('map.html')
 
 @app.route('/graphs')
-def home():
+def graphs():
     return render_template('graphs.html')
 
 @app.route('/recs')
-def home():
+def red():
     return render_template('recs.html')
 
 @app.route('/names')

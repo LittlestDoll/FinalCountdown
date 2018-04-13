@@ -8,7 +8,7 @@ function DropdownPopulate() {
         if (error) {
             return console.warn(error);
         }
-        var sel = document.getElementById('Sample_IDs');
+        var sel = document.getElementById('selBeer');
         for(var i=0; i<response.length; i++) {
             var opt = document.createElement('option');
             opt.innerHTML = response[i];
