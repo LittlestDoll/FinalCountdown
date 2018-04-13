@@ -17,11 +17,11 @@ def home():
 def home():
     return render_template('map.html')
 
-@app.route('graphs')
+@app.route('/graphs')
 def home():
     return render_template('graphs.html')
 
-@app.route('recs')
+@app.route('/recs')
 def home():
     return render_template('recs.html')
 
