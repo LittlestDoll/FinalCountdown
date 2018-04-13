@@ -41,29 +41,60 @@
     </div>        
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="date" placeholder="beer">
-                    <a id="search" class="btn btn-default">Search</a>
+            <div class="col-md-6">
+                <div class="dropdown show">
+                    <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Choose a Beer!
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    </div>
                 </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="col-md-12">
+                    <iframe src="https://giphy.com/embed/ytwDCq9aT3cgEyyYVO" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <a id="beername"></a>
+                <a id="beerstyle"></a>
+                <a id="breweryname"></a>
+            </div>
+            <div class="col">
+                <img id="glass">
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Beer Name</th>
-                            <th>Style</th>
-                            <th>Region</th>
-                            <th>Pairing Notes</th>
-                            <th>Description</th>
-                            <th>ABV</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+            <div class="col">
+                <img class="img-circle" id="pairing1">
+            </div>
+            <div class="col">
+                <img class="img-circle" id="pairing2">
+            </div>
+            <div class="col">
+                <img class="img-circle" id="pairing3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a id="sbeername"></a>
+                <a id="sbeerstyle"></a>
+                <a id="sbreweryname"></a>
+            </div>
+            <div class="col">
+                <img id="sglass">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img class="img-circle" id="spairing1">
+            </div>
+            <div class="col">
+                <img class="img-circle" id="spairing2">
+            </div>
+            <div class="col">
+                <img class="img-circle" id="spairing3">
             </div>
         </div>
     </div>
