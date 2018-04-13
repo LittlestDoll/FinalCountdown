@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
 #from model import Model
 import beer_rec
+import pandas as pd
 
 #For now, app is loading static csv file. We should move the file to resources or 
 #if performance is an issue connect this app to a db. Model shouldn't be needed unless
@@ -28,7 +29,8 @@ def red():
 @app.route('/names')
 #We would use this API endpoint to populate dropdown
 def names():
-    names = data['beer_name']
+    data = pd.read_csv('beer_reviews.csv')
+    names = list(data['beer_name'].unique())
     return jsonify(names)
 
 @app.route('/data/<beer>')
