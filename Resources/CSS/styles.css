@@ -1,3 +1,7 @@
+body {
+  background-color: #FFD700;
+}
+
 .container div {
   position: relative;
   z-index: 1;
@@ -13,27 +17,23 @@
   left: 0;
   right: 0;
   background-image: url("http://www.dineout.co.in/blog/wp-content/uploads/2016/09/beer-3.jpg");
-  background-size: cover;
   opacity: 0.4;
   width: 100%;
   height: 100%;
-  background-position: left top;
-  padding: 20px; 
+  background-position: top left;
+  background-size: 100%;
 }
 
-h1 {
-  color: #00ccff;
-}
-
-h3 {
-  color: #80e5ff;
-}
-
-.navbar-brand {
-  background-color: #00ccff;
+.container-fluid {
+  position: relative;
+  background-color: #FFFFE0;
   color: white;
+  height: auto; /*This is an example*/
+  margin: 0px auto;
+  width: 100%; 
 }
 
 .dropdown-menu {
   color: darkgray;
 }
+
