@@ -28,7 +28,7 @@ body {
   position: relative;
   background-color: #FFFFE0;
   color: white;
-  height: auto; /*This is an example*/
+  height: auto; 
   margin: 0px auto;
   width: 100%; 
 }

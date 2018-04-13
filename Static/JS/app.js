@@ -4,7 +4,7 @@ function init() {
 
 function DropdownPopulate() {
     var url = '/names';
-    Plotly.d3.json(url, function(error, response){
+    d3.json(url, function(error, response){
         if (error) {
             return console.warn(error);
         }
@@ -17,3 +17,5 @@ function DropdownPopulate() {
         }
     });
 }
+
+init()
