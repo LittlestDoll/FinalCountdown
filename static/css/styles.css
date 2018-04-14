@@ -37,3 +37,9 @@ body {
   color: darkgray;
 }
 
+.container-text-center {
+  border-radius: 5px;
+  padding-left: 75px;
+  padding-right: 75px
+}
+

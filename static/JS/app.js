@@ -30,9 +30,9 @@ function updateBeerInfo(beer) {
     d3.json(queryURL, function (error, response) {
         if (error) return console.warn(error);
 
-        name.innerText +=  "name:" + response["beer_name"];
-        style.innerText +=  "style:" + response["beer_style"];
-        brewery.innerText +=  "brewed by:" + response["brewery_name"];
+        name.innerText =  "name:" + response["beer_name"];
+        style.innerText =  "style:" + response["beer_style"];
+        brewery.innerText =  "brewed by:" + response["brewery_name"];
         glass.src = "../static/glasses/" + pairlookup(response["beer_style"], glassimg);
         food_1.src = "../static/pairings/" + pairlookup(response["beer_style"], pairing1img); //img paths based on style
         food_2.src = "../static/pairings/" + pairlookup(response["beer_style"], pairing2img); 
