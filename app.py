@@ -29,8 +29,16 @@ def red():
 @app.route('/names')
 #We would use this API endpoint to populate dropdown
 def names():
-    data = pd.read_csv('beer_reviews.csv')
-    names = list(data['beer_name'].unique())
+    names = ['90 Minute IPA',
+            'India Pale Ale',
+            'Old Rasputin Russian Imperial Stout',
+            'Sierra Nevada Celebration Ale',
+            'Two Hearted Ale',
+            'Arrogant Bastard Ale',
+            'Stone Ruination IPA',
+            'Sierra Nevada Pale Ale',
+            'Stone IPA (India Pale Ale)',
+            'Pliny The Elder']
     return jsonify(names)
 
 @app.route('/advice/<beer>')
