@@ -33,15 +33,15 @@ function updateBeerInfo(beer) {
         name.innerText =  "name:" + response["beer_name"];
         style.innerText =  "style:" + response["beer_style"];
         brewery.innerText =  "brewed by:" + response["brewery_name"];
-        glass.src = "../static/glasses/" + pairlookup(response["beer_style"], glassimg);
-        food_1.src = "../static/pairings/" + pairlookup(response["beer_style"], pairing1img); //img paths based on style
-        food_2.src = "../static/pairings/" + pairlookup(response["beer_style"], pairing2img); 
-        food_3.src = "../static/pairings/" + pairlookup(response["beer_style"], pairing3img); 
+        //glass.src = "static/glasses/" + pairlookup(response["beer_style"], glassimg);
+        food_1.src = "static/pairings/" + pairlookup(response["beer_style"], pairing1img); //img paths based on style
+        food_2.src = "static/pairings/" + pairlookup(response["beer_style"], pairing2img); 
+        food_3.src = "static/pairings/" + pairlookup(response["beer_style"], pairing3img); 
     });
 }
 
 function pairlookup(style, ref) {
-    var data = require('../static/js/beer_styles.json');
+    var data = require('static/js/beer_styles.json');
     var output = data.style.ref;
 
     return output;
