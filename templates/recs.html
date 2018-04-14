@@ -12,7 +12,7 @@
     <link href="../static/css/reset.css" type="text/css" rel="stylesheet">
     <link href="../static/css/styles.css" type="text/css" rel="stylesheet">
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="./beer-stein-202218/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="static/img/beer-stein-202218/favicon.ico" />
     <title>Fun with Beer!</title>
   </head>
 
@@ -37,11 +37,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="dropdown show">
-                    <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Choose a Beer!
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div class="form-group">
+                    <label for="sel1">Choose a Beer!:</label>
+                    <select class="form-control" id="dropdown" onchange="optionChanged(this.value)">
+                    </select>
                     </div>
                 </div>
             </div>
@@ -69,27 +68,6 @@
             </div>
             <div class="col">
                 <img class="img-circle" id="pairing3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <a id="sbeername"></a>
-                <a id="sbeerstyle"></a>
-                <a id="sbreweryname"></a>
-            </div>
-            <div class="col">
-                <img id="sglass">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <img class="img-circle" id="spairing1">
-            </div>
-            <div class="col">
-                <img class="img-circle" id="spairing2">
-            </div>
-            <div class="col">
-                <img class="img-circle" id="spairing3">
             </div>
         </div>
     </div>

@@ -7,15 +7,6 @@ breweries = pd.read_csv('breweries.csv')
 data = pd.merge(reviews, breweries, how='inner', left_on = 'brewery_name', right_on = 'name')
 data = data.fillna(value = 0)
 
-import pandas as pd
-import numpy as np
-from scipy.spatial import distance
-reviews = pd.read_csv('beer_reviews.csv')
-breweries = pd.read_csv('breweries.csv')
-
-data = pd.merge(reviews, breweries, how='inner', left_on = 'brewery_name', right_on = 'name')
-data = data.fillna(value = 0)
-
 def similar_reviewers(beer_1, beer_2):
     reviews_1 = data.loc[data['beer_name'] == beer_1]
     reviews_2 = data.loc[data['beer_name'] == beer_2]
@@ -50,11 +41,14 @@ def recommend_beer(user_beer):
     max_distance = 100
     sim_beer = "Sorry, we couldn't find anything similar! Try again?"
     for beer in beers:
-        print ("starting", beer)
         if user_beer != beer:
+            print("cool")
             if len(similar_reviewers(user_beer, beer)) != 0:
+                print('skipping' + beer)
                 row = [beer, calculate_similarity(user_beer, beer)]
                 if row[1] < max_distance:
-                    max_distance = row[1]
+                    print(row[1])
                     sim_beer = row[0]
+            else:
+                print("no common reviewers")
     return(sim_beer)
