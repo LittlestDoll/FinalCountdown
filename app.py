@@ -14,8 +14,8 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/maps')
-def maps():
+@app.route('/map')
+def map():
     return render_template('map.html')
 
 @app.route('/graphs')
