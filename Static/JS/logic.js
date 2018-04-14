@@ -1,4 +1,4 @@
-d3.json("Static/JS/TopBeersLocation.json", function createMarkers(data) {
+d3.json("static/JS/TopBeersLocation.json", function createMarkers(data) {
 
     var beerMarkers = [];
     var mark;
