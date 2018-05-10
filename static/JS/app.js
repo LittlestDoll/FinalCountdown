@@ -1,22 +1,22 @@
-function init() {
-    DropdownPopulate()
-}
+// function init() {
+//     DropdownPopulate()
+// }
 
-function DropdownPopulate() {
-    var url = '/names';
-    d3.json(url, function(error, response){
-        if (error) {
-            return console.warn(error);
-        }
-    for(var i=0; i<response.length; i++) {
-        var sel = document.getElementById('dropdown');
-            var opt = document.createElement('option');
-            opt.text = response[i];
-            opt.value = response[i];
-            sel.appendChild(opt);
-        }
-    });
-}
+// function DropdownPopulate() {
+//     var url = '/names';
+//     d3.json(url, function(error, response){
+//         if (error) {
+//             return console.warn(error);
+//         }
+//     for(var i=0; i<response.length; i++) {
+//         var sel = document.getElementById('dropdown');
+//             var opt = document.createElement('option');
+//             opt.text = response[i];
+//             opt.value = response[i];
+//             sel.appendChild(opt);
+//         }
+//     });
+// }
 
 function updateBeerInfo(beer) {
     var name = document.getElementById('beername');
@@ -52,4 +52,34 @@ function optionChanged() {
     updateBeerInfo(name);
 }
 
-init();
+$(document).ready(function() {
+    $(".js-data-ajax").select2({
+      ajax: {
+        url: "/beer_search",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            query: params.term
+          };
+        },
+        processResults: function (data, params) {
+            return {
+                "results": data.map(function(beer) {
+                    return {
+                        id: beer,
+                        text: beer
+                    };
+                }),
+                "pagination": {
+                    "more": false
+                }
+            }
+        },
+        cache: true
+      },
+      placeholder: 'Search for a beer',
+      escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+      minimumInputLength: 1,
+    });
+});

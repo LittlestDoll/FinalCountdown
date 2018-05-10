@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 #from model import Model
 import beer_rec
 import pandas as pd
@@ -8,6 +8,8 @@ import pandas as pd
 #we have a db connection
 
 app = Flask(__name__)
+data = pd.read_csv('beer_reviews.csv')
+names = list(data['beer_name'].unique())
 #model = Model()
 
 @app.route('/')
@@ -26,20 +28,13 @@ def graphs():
 def red():
     return render_template('recs.html')
 
-@app.route('/names')
+@app.route('/beer_search')
 #We would use this API endpoint to populate dropdown
-def names():
-    names = ['90 Minute IPA',
-            'India Pale Ale',
-            'Old Rasputin Russian Imperial Stout',
-            'Sierra Nevada Celebration Ale',
-            'Two Hearted Ale',
-            'Arrogant Bastard Ale',
-            'Stone Ruination IPA',
-            'Sierra Nevada Pale Ale',
-            'Stone IPA (India Pale Ale)',
-            'Pliny The Elder']
-    return jsonify(names)
+def search():
+    query = request.args.get('query').lower()
+    search_results = [beer for beer in names if beer.lower().find(query) != -1]
+    return jsonify(search_results)
+
 
 @app.route('/advice/<beer>')
 def get_similar(beer):
